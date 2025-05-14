@@ -1,0 +1,19 @@
+
+services:
+  flask_app:
+    image: hardened-flask
+    container_name: flask_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:5000:5000"  # Restrict port to localhost
+    environment:
+      - APP_PASSWORD=${APP_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    pids_limit: 100
+    restart: unless-stopped
