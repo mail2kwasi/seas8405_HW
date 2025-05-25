@@ -1,0 +1,29 @@
+{
+  "realm": "custom-realm",
+  "enabled": true,
+  "users": [
+    {
+      "username": "frank",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "nero2244",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "my-flask-client",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "p7VppIvzzQgA1tVywGHTRqejaXOCOPS4",
+      "redirectUris": ["http://localhost:5000/*"],
+      "directAccessGrantsEnabled": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.3
+    command: start-dev --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./keycloak/realm-config.json:/opt/keycloak/data/import/realm-config.json
+
+  app:
+    build:
+      context: ./flask_app
+    container_name: iam-architecture-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - keycloak
